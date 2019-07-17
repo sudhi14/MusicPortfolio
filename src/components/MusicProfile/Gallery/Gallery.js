@@ -52,7 +52,6 @@ class Gallery extends Component {
                 transClass : 'fadeOut'
             },
             () => {
-                //set time out 
                 setTimeout(() => this.changeImage(),2000);
             })
         }, 4000);
