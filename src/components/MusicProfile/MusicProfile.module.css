@@ -1,9 +1,8 @@
 .bgImage {
-  background: linear-gradient(#363636, #020202, transparent) rgba(0, 0, 0, 0.9);
+  background: linear-gradient(#b9b8b8, #1d1b1b, transparent) rgba(0, 0, 0, 0.9);
   height : 100%;
   width: 100%;
   background-size: cover;
-  background-repeat: no-repeat;
   background-attachment:fixed;
 }
 
