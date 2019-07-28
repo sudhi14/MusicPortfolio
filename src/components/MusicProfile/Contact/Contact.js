@@ -1,10 +1,7 @@
 import React , {Component} from 'react'
 import {Row, Form, Button,Col} from 'react-bootstrap'
 import firebaseBackEnd from '../../../DataProvider/StoreData/Firebase';
-import 'firebase/firestore'
-import soundCloudLogo from '../../../assets/Social/001-soundcloud.png'
-import faceBookLogo from '../../../assets/Social/002-facebook.png'
-import instagram from '../../../assets/Social/003-instagram.png'
+import 'firebase/firestore';
 import styles from './Contact.module.css'
 //import { AlertList, Alert, AlertContainer }  from "react-bs-notifier";
 //import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -107,7 +104,7 @@ class Contact extends Component {
         
         return (
             
-            <Row style = {{paddingTop : "20px"}} >
+            <Row style = {{margin : '0', width : '100%'}} >
 
                 <Col xs = {4}>
                 {/* <Fade in={false}>   
@@ -148,27 +145,6 @@ class Contact extends Component {
                         <Button  variant="primary" type="submit" size="md" block >Submit</Button>
                     </Form.Group>
                     </Form>
-                </Col>
-                <Col xs = {4} className = {styles.socialImgDiv}>
-                    <Row>
-                    <Col xs = {3}>
-                        <a href = "https://www.instagram.com/emcee_deep" target = "_blank" rel="noopener noreferrer">
-                            <img src = {instagram} alt={instagram} className = {styles.socialImg} ></img>
-                        </a>
-                    </Col>
-
-                    <Col xs = {3}>
-                        <a href = "https://www.facebook.com/sudheep.shady" target = "_blank" rel="noopener noreferrer">
-                            <img src = {faceBookLogo} alt={faceBookLogo} className = {styles.socialImg}></img>
-                        </a>
-                    </Col>
-
-                    <Col xs = {3}>
-                        <a href = "https://soundcloud.com/sudheep-shady" target = "_blank" rel="noopener noreferrer">
-                            <img src = {soundCloudLogo} alt={soundCloudLogo} className = {styles.socialImg} style = {{borderRadius: '50px'}}></img>
-                        </a>
-                    </Col>
-                    </Row>
                 </Col>
             </Row>
         );

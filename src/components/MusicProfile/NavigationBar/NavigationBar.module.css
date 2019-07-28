@@ -1,0 +1,121 @@
+.Nav {
+    background: black;;
+    /* width : 100%;
+    min-height: 5vh;*/
+    min-height:30%;
+    margin: 0;
+    box-shadow: 0px 1px 10px #999;
+}
+
+/* Navigation list styling*/
+.List { 
+    position : relative;
+    /* border: red solid 2px; */
+    height: 100%;
+    border-radius: 1%;
+ }
+ 
+ .List div {
+    /* border: green solid 2px; */
+    text-align : center;
+    padding : 4%;
+ }
+ 
+.List li {
+    display: inline;
+    padding : 40px 80px 5px 70px
+}
+  
+.List li a {
+    text-decoration: none;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color:rgb(209, 206, 206)
+}
+.List li a:hover {
+    color : white;
+    cursor: pointer;
+}
+
+
+/* Logo styling*/
+
+.Logo {
+     /* border: green solid 2px; */
+    height: 75%;
+    width:100%;
+    margin: 0;
+}
+
+.Logo img {
+    height: 100%;
+    width:100%;
+    object-fit:scale-down;
+}
+
+.Button {
+    background: transparent;
+    position : relative;
+    border: 1px rgb(156, 0, 0) solid;
+    margin-left: 5px;
+    margin-right :100px;
+}
+
+.Button:hover {
+    cursor: pointer;
+    border: 1px rgb(238, 23, 23) solid;
+    background-color:  rgb(44, 0, 0);
+}
+.Button:after {
+    background: transparent;
+    border: 1px rgb(238, 23, 23) solid;
+}
+
+.text {
+    color:white;
+    background-color:  rgb(44, 0, 0);
+    position : relative;
+    border: 1px rgb(156, 0, 0) solid;
+    margin-left :20px;
+    border-radius: 4px;
+    height: 38px;
+    width : 250px;
+    padding : 3px;
+}
+
+.text:focus {
+    border: 1px rgb(238, 23, 23) solid;
+    outline : none;
+}
+
+
+.socialImg {
+   
+    /* border : 1px green solid; */
+    /* border :  solid 4px black; */
+    border-radius: 25px;
+    overflow: hidden;
+    height:40px;
+    width: 40px;
+    transition: transform .2s; /* Animation */
+    margin-right : 15px;
+}
+
+.socialImgDiv {
+    padding-top:30px;
+    width : 100%;
+    margin : 0;
+    /* border : 1px green solid; */
+    transition: transform .2s; /* Animation */
+}
+
+.socialImg:hover {
+        cursor : pointer;
+        transform: scale(1.1);
+}
+
+.imgCol {
+    position: relative;
+    display: contents;
+}

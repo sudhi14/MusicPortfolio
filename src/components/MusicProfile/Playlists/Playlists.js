@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import {Row, Col,Modal} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 // import ApiData from '../../../DataProvider/GetData/GetData'
 // import styles from './Playlist.module.css'
 import  {playlist as Playlist} from './Playlist/Playlist'
 import {playlistModal as PlaylistModal} from './Playlist/Playlist'
+import LoadSpinner from '../LoadSpinner/LoadSpinner'
 
 
 class Playlists extends Component {
@@ -50,7 +51,7 @@ class Playlists extends Component {
             
          return ( 
             <Row style = {{paddingTop:"200px",paddingLeft : "100px"}} >
-                {this.props.youtubeData.items ? this.videoItems() : "Processing"}
+                {this.props.youtubeData.items ? this.videoItems() : <LoadSpinner/>}
                 <PlaylistModal 
                     currentVideo = {this.state.currentVideo} 
                     currentElement = {this.state.currentElement}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Carousal from '../Carousal/Carousal';
-import {Row,Col} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 import LatestVideoPanel from '../LatestVideoPanel/LatestVideoPanel'
 
 
@@ -63,24 +63,24 @@ class Gallery extends Component {
         
         return (
 
-            <Row style = {{width:'100%'}}>
+            <div>
 
                 <LatestVideoPanel youtubeData = {this.props.youtubeData}/>
 
-                <Row style={{color : "white",fontWeight:"bold",fontSize : "50px"}}>
+                {/* <Row style={{color : "white",fontWeight:"bold",fontSize : "50px"}}>
                     <p textalign = "center" style = {{textShadow:"3px 3px black"}} >"AINT NOTHING LIKE OLD SCHOOL"</p>
-                </Row>
+                </Row> */}
 
 
-                <Carousal 
+                {/* <Carousal 
                     clicked = {this.changeImage}
                     allImages = {this.state.allImages}
                     currImage = {this.state.currImage}
                     transClass = {this.state.transClass} />
-  
+   */}
 
   
-            </Row>
+            </div>
         );
     }
 

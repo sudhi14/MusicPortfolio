@@ -1,0 +1,38 @@
+.LatestVideoPanel {
+    background-image : url('../../../assets/Social/bgImage.jpeg');
+    /* background-blend-mode: multiply; */
+    background-size:cover;
+    display: inline-block;
+    position: relative;
+    width : 100%;
+    height : 70vh;
+}
+
+@media only screen and (max-width: 600px) {
+    .LatestVideoPanel {
+        height : 40vh;
+    }
+  }
+
+.videoContainer {
+display: inline-block;
+height: 101%;
+box-sizing:border-box;
+width: 60%;
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%,-50%);
+}
+
+@media only screen and (max-width: 600px) {
+    .videoContainer {
+        width : 90%;
+    }
+  }
+
+.videoContainer iframe {
+height: 100%;
+width: 100%;
+z-index: 1;
+}
