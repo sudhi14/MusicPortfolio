@@ -52,9 +52,35 @@
     cursor : pointer;
   }
 
-  .imageDimension  {
-    height : 550px;
-    width: auto;
-    object-fit :cover; 
+
+/* Slider */
+
+.Slider { 
+  height: 80vh;
+  width: 100%;
+  position: relative;  
+}
+
+
+.SliderWrapper {
+  position: absolute;
+  width:100%;
+  height:100%;
+  display: flex; 
+  position : '0%';
+}
+
+.SliderWrapper img {
+  min-width:100%;
+  height:100%;
+  background-position:center;
+  background-size:cover;
+  position : '0%';
+}
+
+@media only screen and (max-width: 600px) {
+  .Slider {
+      height : 40vh;
+  }
 }
 

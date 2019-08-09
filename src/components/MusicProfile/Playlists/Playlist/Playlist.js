@@ -1,46 +1,102 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Col,Modal} from 'react-bootstrap';
-import styles from './Playlist.module.css'
+import styles from './Playlist.module.css';
+import closeIcon from '../../../../assets/Social/closeIcon.jpg';
+import HOC from '../../../HOC/HOC';
+import MyContext from '../../../ContextApi/ContextApi';
 
-const playlist = (props) => {
-    return (
-        <Col xs = {2} className = {styles.VideoSize}>
-            <img 
-                id = {props.index} 
-                className = {styles.VideoSize} 
-                style = {{border : "solid 3px white" , borderRadius : "5%", opacity:0.9}} 
-                src ={props.curr.snippet.thumbnails.high.url}
-                onClick = {props.getCurrentVideo}
-                alt = {`Img${props.index}`} >
-            </img>
-        </Col>
-    );
-}
+class Playlist extends Component  {
 
-const playlistModal = (props) => {
-    
-    const createFrame = () => {
-            return (<iframe
-                title={props.currentVideo.snippet.title}
-                width="100%" height="550px;"
-                src = { `https://www.youtube.com/embed/${props.currentVideo.id.videoId}?autoplay=1` }
-                frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen>
-            </iframe> );
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalState : false,
+            currentVideo: ''
+        }
     }
 
-    return (
-        <Modal size = "xl" show={props.modalState} onHide = {props.toggleModal}>
-            <Modal.Header closeButton>
-                <Modal.Title id = 'example-custom-modal-styling-title'>
-                {props.modalState ? props.currentVideo.snippet.title :'Modal False'}
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                 {props.modalState ? createFrame() :'Modal False'}
-            </Modal.Body>
-        </Modal>
-    );
+
+    createFrame (targetId) {
+        return(
+            <div className = {styles.Overlay}>
+                <div className = {styles.CloseOverlay}><img src = {closeIcon} alt = "closeIcon" onClick = {() => this.toggleModal()}></img></div>
+                <div>
+                    <iframe
+                        className = {styles.frames}
+                        src = { `https://www.youtube.com/embed/${targetId}?autoplay=1` }
+                        frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen>
+                    </iframe>
+                </div>
+            </div>
+        );    
+    }
+
+
+    getCurrentVideo (e) {
+        let targetId;
+
+        if (e.target.tagName.toLowerCase() === 'img') {
+            targetId = e.target.id;
+        } 
+        else {
+            targetId = e.target.previousElementSibling.id;
+        }
+        this.toggleModal();
+        this.setState ({
+            currentVideo : this.createFrame(targetId)
+        });
+
+    }
+
+    toggleModal () {
+        console.log("modal state s called", this.state.modalState);
+        this.setState({
+            modalState : !this.state.modalState
+        });
+    }
+
+    render() {
+        return (
+            <HOC>
+                <div className = {styles.thumbnailDiv}>
+                    <img 
+                        id = {this.props.youtubeId}   
+                        src ={this.props.src}
+                        onClick = {(e) => this.getCurrentVideo(e)}
+                        className = {styles.thumbnailDivImg}
+                        alt = {`Img${this.props.index}`} >
+                    </img>
+                    <div className = {styles.thumbnailDivDiv} onClick = {(e) => this.getCurrentVideo(e)}>
+                        Play
+                    </div>
+                </div>  
+                {this.state.modalState ? this.state.currentVideo : '' }  
+            </HOC>
+        );
+    } 
 }
 
-export  {playlist,  playlistModal};
+export default Playlist;
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------
+
+  // <Modal size = "xl" show={props.modalState} onHide = {props.toggleModal}>
+            //     <Modal.Header closeButton>
+            //         <Modal.Title id = 'example-custom-modal-styling-title'>
+            //         {props.modalState ? props.currentVideo.snippet.title :'Modal False'}
+            //         </Modal.Title>
+            //     </Modal.Header>
+            //     <Modal.Body>
+            //          {props.modalState ? createFrame() :'Modal False'}
+            //     </Modal.Body>
+            // </Modal>

@@ -52,7 +52,7 @@ const navigationBar = (props) => {
                         <div>
                             <ul>
                                 <li><a href = '#'>Home</a></li>
-                                <li><a href = '#'>Playlist</a></li>
+                                <li><a href = '#playlist'>Playlist</a></li>
                                 <li><a href = '#'>Blog</a></li>
                                 <li><a href = '#'>About Me</a></li>
                             </ul>

@@ -4,17 +4,57 @@ import styles from './Carousal.module.css';
 
 
 class Carousal extends Component  {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            slideImage :0
+        }
+    }
+
+    imageCreater () {
+        let imagesReq = require.context("../../../assets", false, /.*\.*$/);
+            return imagesReq.keys().map(function(key) {
+            return (
+                    <img
+                        key = {`Images${key}`}
+                        id = {`caurosalImage${key}`}
+                        src = {imagesReq(key)}
+                        alt = {`Images${key}`}
+                    ></img>
+            );
+        });
+    }
+
+    componentDidMount() {
+        let counter = 0;
+        setInterval(() => {
+            if(counter < 2) {
+                this.setState ({
+                    slideImage : -(++counter) * 100
+                })
+            }
+            else {
+                counter = 0;
+                this.setState({
+                    slideImage : 0
+                })
+            }
+        }, 3000);
+    }
     
     render() {
         return (
-            <Row style = {{border:"solid 2px white"}}>
-                <div id = "imageCarousal" onClick = {this.props.changeImage}  style = {{width:'100%'}} >
-                {/* <div id = "imageCarousal" onClick = {this.changeImage}  style = {{width : "100%",backgroundImage:`url(${oldschoolImageCover})`,zIndex:"-1"}} > */}
-                    <img id = {this.props.currImage} 
-                        src = {(this.props.allImages[this.props.currImage])}
-                        className = {[this.props.transClass === 'fadeIn' ? styles.fadeIn : styles.fadeOut, styles.imageDimension].join(" ")}
-                        alt = "First"
-                    ></img>
+            <Row style = {{width:'100%',margin:'0'}}>
+                <div className = {styles.Slider} >
+                    <div className = {styles.SliderWrapper} 
+                        style = {{
+                            transform: `translateX(${this.state.slideImage}%)`,
+                            transition: 'transform ease-out 1s'
+                        }}
+                    >
+                        {this.imageCreater()}   
+                    </div>
                 </div>
             </Row>
         );

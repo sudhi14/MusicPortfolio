@@ -1,17 +1,119 @@
-.VideoSize {
-    height : 100%;
-    transition: transform .2s; /* Animation */
-    width : 100%;
-    margin : 5px;
-    padding : 2px;
+.thumbnailDiv {
+    background: rgba(26, 26, 26, 0.918);
+    position: relative;
+    height: 100%;
+    width:100%;
+    text-align: center;
 }
+
+.thumbnailDivImg {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+
+}
+
+.thumbnailDiv:hover .thumbnailDivImg  {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.thumbnailDivDiv{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border : 1px solid white;
+    border-radius: 5px;
+    padding : 5px;
+    text-transform: uppercase;
+    color:white;
+    opacity:0;
+    transition-duration:  .50s;
+}
+
+.thumbnailDiv:hover .thumbnailDivDiv  {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.thumbnailDivDiv:hover  {
+    background: rgba(255, 255, 255, 0.315)
+}
+
+
+
+
+.Overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.CloseOverlay {
+    width : 4%;
+    height : 4%;
+    float :right;
+    margin : 2%;
+}
+
+.CloseOverlay img {
+    width: 100%;
+    width: 100%;
+    background : rgb(83, 83, 83);
+    border : 2px  black solid;
+    border-radius: 50%;
+    z-index: 2;
+    transition: transform .2s;
+}
+
+.CloseOverlay img:hover {
+    transform: scale(1.2); 
+    background : rgb(161, 161, 161); 
+}
+
+.frames {
+    width : 60%;
+    height: 60vh;
+    position: absolute;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%,-50%);
+}
+
+
+@media only screen and (max-width: 600px) {
+    
+    .thumbnailDivImg  {
+        opacity: 0.5;
+    }
+
+    .thumbnailDivDiv{
+        opacity:1;
+    }
+
+    .frames {
+        width : 100%;
+        height: 40vh;
+        padding : 5%;
+    }
+
+    .CloseOverlay {
+        width : 10%;
+        height : 10%;
+        margin : 5%;
+    }
+
+}
+
   
 
-.VideoSize:hover {
-    cursor : pointer;
-    transform: scale(1.1);
-  }
-
-.customDialog {
-    width:100%
-}

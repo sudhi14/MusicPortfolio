@@ -1,0 +1,42 @@
+.playlists {
+    margin : 0;
+    width : 100%;
+    height : 70%;
+    /* border : 1px red solid; */
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: repeat(1,1fr);
+    grid-column-gap: 3px;
+    grid-row-gap: 2px;
+    padding-top:10%;
+    padding-bottom:10%;
+}
+
+.playlists > div:nth-child(odd) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.playlists > div:nth-child(even) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+@media only screen and (max-width: 600px) {
+    .playlists {
+        grid-template-columns: minmax(min-content,300px) minmax(min-content,300px);
+    }
+
+    .playlists > div:nth-child(odd) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    
+    .playlists > div:nth-child(even) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+  }
+
+
+ 

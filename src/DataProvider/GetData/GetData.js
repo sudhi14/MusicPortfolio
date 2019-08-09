@@ -76,7 +76,8 @@ const getApi = async () => {
   
   const response =  await fetch(`https://www.googleapis.com/youtube/v3/search?key=${getYoutubeConfig().youtubeKey()}&channelId=${getYoutubeConfig().channelId()}&part=snippet,id&order=date&maxResults=20`);
   const data = await response.json();
-  // const data = '';
+  //const data = '';
+  //console.log("mydata", data);
   return data;
 }
 

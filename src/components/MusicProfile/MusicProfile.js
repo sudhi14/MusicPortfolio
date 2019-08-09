@@ -6,6 +6,8 @@ import Playlists from './Playlists/Playlists';
 import Contact from './Contact/Contact';
 import styles from './MusicProfile.module.css';
 import getApi from '../../DataProvider/GetData/GetData';
+import MyContext from '../ContextApi/ContextApi';
+import IntroHome from './IntroHome/IntroHome';
 //import image from '../../assets/Social/bgImage.jpeg'
 //import HOC from '../HOC/HOC.js'
 
@@ -13,79 +15,36 @@ import getApi from '../../DataProvider/GetData/GetData';
 class MusicProfile extends Component {
     
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            youtubeData : '',
-            name : ['Music Producer','Rap Artist','Sound Engineer'],
-            count : 0
+            youtubeData : ''
         }
-        this.animation();
     }
 
     async componentDidMount() {
+        console.log("I am called : Music Profile (componentDidMount::)")
         const jsonData = await getApi();
         this.setState({
             youtubeData : jsonData
         })
     }
 
-    animation() {
-        let counter = 0;
-        console.log("Start",this.state.name.length);
-        setInterval(() => {
-            
-            if(counter < this.state.name.length-1) {
-                this.setState({
-                    count : ++counter})
-            }
-            else {
-                this.setState({
-                    count : 0 })
-                    counter = 0;
-            }
-            
-        }, 3000);
-    }
-
-    render() {            
-
+    render() {
         return (
                 <div className = {styles.bgImage}> 
                     <NavigationBar />
                     <Row>
-                    <Col xs = {4} className = {styles.Heading}>
-                    <span className = {styles.line}>
-                        </span>
-                        <span className = {styles.intro}>
-                            M.U.S.I.C
-                        </span>
-                        <span className = {styles.s1}>
-                            Emcee
-                        </span>
-                        <span className = {[styles.s1,styles.s2].join(" ")}>
-                            Deep
-                        </span>
-                        <span className = {styles.title}>
-                            {this.state.name[this.state.count]}
-                        </span>
-                    </Col>    
-                    <Col xs = {4} className = {styles.Heading2}>
-                        <span>
-                            "I ma 90's kid..Bring it up man!"
-                        </span>
-                    </Col> 
-                    <Col xs = {4} className = {styles.Heading2}>
-                        <span className = {styles.s3}>
-                            "Yo,I rise again like I wish it" - Emcee Deep  
-                        </span>
-                    </Col> 
+                        <IntroHome name = {this.state.name} count = {this.state.count} />
                     </Row>     
                     <Row className = {styles.secRow}>
-                        
-                        <Gallery youtubeData = {this.state.youtubeData ? this.state.youtubeData : ""}/>
-                        <Col xs = {0}>
-                            <Playlists youtubeData = {this.state.youtubeData ? this.state.youtubeData : ""} />
-                        </Col>
+                        <MyContext.Provider value = {this.state.youtubeData ? {data:this.state.youtubeData} : ''}>
+                            <Col xs = {0} >
+                                <Gallery/>
+                            </Col>
+                            <Col xs = {0}>                           
+                                <Playlists />    
+                            </Col>
+                        </MyContext.Provider>
                         {/* <Contact /> */}
                     </Row>
                 </div>
